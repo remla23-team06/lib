@@ -1,0 +1,4 @@
+# Removing Pycache
+
+/__pycache__
+/.idea
