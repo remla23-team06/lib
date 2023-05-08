@@ -4,11 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools-git-version]
 enabled = true
+template = "{tag}"
 
 [project]
-name = "remla06/version-lib"
-author = "Rohan Sobha"
-author_email = "r.r.sobha@student.tudelft.nl"
+dynamic = ["version"]
+name = "remla06.version-lib"
+authors = [
+    { name = "Rohan Sobha", email = "r.r.sobha@student.tudelft.nl" }
+]
 description = "A simple library that returns its own version"
 classifiers = [
     "Programming Language :: Python :: 3",
