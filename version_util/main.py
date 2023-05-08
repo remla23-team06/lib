@@ -5,6 +5,6 @@ class VersionUtil:
     @classmethod
     def get_version(cls):
         try:
-            return metadata.version('your_package_name')
+            return metadata.version('version_util')
         except metadata.PackageNotFoundError:
             return 'Package not found'
