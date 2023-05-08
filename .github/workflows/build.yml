@@ -31,7 +31,7 @@ jobs:
                     --tag $IMG:${{ env.version_major }}.${{ env.version_minor }}.latest \
                     --tag $IMG:${{ env.version_major }}.latest \
                     --tag $IMG:latest \
-                    --build-arg TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }}
+                    --build-arg TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
                     .
                   docker push --all-tags $IMG
                   
