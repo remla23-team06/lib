@@ -40,6 +40,8 @@ jobs:
         steps:
             - name: Pull published image
               run: |
+                  IMG=ghcr.io/${{ github.repository }}
+                  IMG=${IMG,,}
                   docker pull $IMG
             - name: Push package to TestPyPi
               run: |
