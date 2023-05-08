@@ -38,6 +38,9 @@ jobs:
         runs-on: ubuntu-22.04
         needs: build_docker
         steps:
+            - name: Pull published image
+              run: |
+                  docker pull $IMG
             - name: Push package to TestPyPi
               run: |
                   IMG=ghcr.io/${{ github.repository }}
