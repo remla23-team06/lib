@@ -13,8 +13,8 @@ COPY Pipfile Pipfile.lock /app/
 # Install packages using pipenv
 RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
 
-# Show all files in current folder
-RUN ls -a
+# Copy the current directory contents into the container at /app
+COPY . /app
 
 # Build the library
 RUN pipenv run python3 -m build
