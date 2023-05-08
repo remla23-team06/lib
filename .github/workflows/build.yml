@@ -33,9 +33,16 @@ jobs:
                     --tag $IMG:latest \
                     .
                   docker push --all-tags $IMG
+    publish_package:
+        name: Publish library to TestPypi
+        runs-on: ubuntu-22.04
+        needs: build_docker
+        steps:
             - name: Push package to TestPyPi
               run: |
-                  docker run $IMG -e TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }}
+                  IMG=ghcr.io/${{ github.repository }}
+                  IMG=${IMG,,}
+                  docker run -e TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} $IMG 
                   
                   
             
