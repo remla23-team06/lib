@@ -11,7 +11,7 @@ WORKDIR /app
 COPY Pipfile Pipfile.lock /app/
 
 # Install packages using pipenv
-RUN pip install pipenv && pipenv install -deploy --ignore-pipfile
+RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
 
 # Build the library
 RUN python3 -m build
