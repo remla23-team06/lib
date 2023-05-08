@@ -20,8 +20,8 @@ RUN pipenv run python3 -m build
 CMD ["pipenv","run","python3", "-m", "pip", "install", "--upgrade", "twine"]
 
 # Upload package to Test Pypi
-CMD ["pipenv", "run", "python3", "-m", "twine", "upload", "--repository",  "testpypi",  "--username", "__token__", "--password",
- "$TWINE_PASSWORD", "dist/*"]
+CMD ["pipenv", "run", "python3", "-m", "twine", "upload", "--repository",  "testpypi",
+  "--username", "__token__", "--password=$TWINE_PASSWORD", "dist/*"]
 
 
 
