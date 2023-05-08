@@ -22,7 +22,7 @@ jobs:
                   echo "version_major=$MAJOR" >> $GITHUB_ENV
                   echo "version_minor=$MINOR" >> $GITHUB_ENV
                   echo "version_patch=$PATCH" >> $GITHUB_ENV
-            - name: Build and Push Docker Image
+            - name: Build library package
               run: |
                   IMG=ghcr.io/${{ github.repository }}
                   IMG=${IMG,,}
@@ -30,10 +30,12 @@ jobs:
                     --tag $IMG:${{ env.version }} \
                     --tag $IMG:${{ env.version_major }}.${{ env.version_minor }}.latest \
                     --tag $IMG:${{ env.version_major }}.latest \
-                    --tag $IMG:latest \
-                    --build-arg TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
+                    --tag $IMG:latest
                     .
                   docker push --all-tags $IMG
+            - name: Push package to TestPyPi
+              run: |
+                  docker run $IMG -e TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }}
                   
                   
             

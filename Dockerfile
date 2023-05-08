@@ -1,8 +1,5 @@
 # Use the official Python 3.10 image from Docker Hub
-FROM python:3.10
-
-# Set the environment variable of TWINE_PASSWORD
-ARG TWINE_PASSWORD
+FROM python:3.10.7
 
 # Set the working directory to /app
 WORKDIR /app
@@ -20,10 +17,11 @@ COPY . /app
 RUN pipenv run python3 -m build
 
 # Upgrade Twine (if necessary)
-RUN pipenv run python3 -m pip install --upgrade twine
+CMD ["pipenv","run","python3", "-m", "pip", "install", "--upgrade", "twine"]
 
 # Upload package to Test Pypi
-RUN pipenv run python3 -m twine upload --repository testpypi --username __token__ --password=$TWINE_PASSWORD dist/*
+CMD ["pipenv", "run", "python3", "-m", "twine", "upload", "--repository",  "testpypi",  "--username", "__token__", "--password",
+ "$TWINE_PASSWORD", "dist/*"]
 
 
 
