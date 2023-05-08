@@ -4,9 +4,6 @@ FROM python:3.10
 # Set the environment variable of TWINE_PASSWORD
 ARG TWINE_PASSWORD
 
-# Show PWD
-RUN echo $TWINE_PASSWORD
-
 # Set the working directory to /app
 WORKDIR /app
 
