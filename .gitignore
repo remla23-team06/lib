@@ -2,3 +2,5 @@
 
 /__pycache__
 /.idea
+/dist
+/src/*.egg-info
