@@ -36,7 +36,7 @@ jobs:
     build_lib:
         name: Build and publish library
         runs-on: ubuntu-22.04
-        depends-on: build_docker
+        needs: build_docker
         steps:
             - name: Pull image
               run: |
