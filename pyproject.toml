@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-version]
+enabled = true
+
+[project]
+name = "remla06/version-lib"
+author = "Rohan Sobha"
+author_email = "r.r.sobha@student.tudelft.nl"
+description = "A simple library that returns its own version"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent"
+]
