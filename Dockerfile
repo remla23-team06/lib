@@ -13,6 +13,9 @@ COPY Pipfile Pipfile.lock /app/
 # Install packages using pipenv
 RUN pip install pipenv && pipenv install
 
+# List the packages installed in pipenv
+RUN pipenv graph
+
 # Build the library
 RUN python3 -m build
 
