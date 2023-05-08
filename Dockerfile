@@ -13,8 +13,8 @@ COPY Pipfile Pipfile.lock /app/
 # Install packages using pipenv
 RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
 
-# Go to app folder from image
-RUN cd ./app
+# Show all files in current folder
+RUN ls -a
 
 # Build the library
 RUN pipenv run python3 -m build
