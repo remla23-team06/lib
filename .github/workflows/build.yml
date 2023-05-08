@@ -45,7 +45,7 @@ jobs:
                 docker pull $IMG
             - name: Run image as container
               run: |
-                  docker run --name simple-lib -e TWINE_PASSWORD={{ secrets.TWINE_PASSWORD }} $IMG
+                  docker run --name simple-lib -e TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} $IMG
                   
                   
             
