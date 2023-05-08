@@ -8,7 +8,7 @@ template = "{tag}"
 
 [project]
 dynamic = ["version"]
-name = "remla06.version-lib"
+name = "remla_version_lib"
 authors = [
     { name = "Rohan Sobha", email = "r.r.sobha@student.tudelft.nl" }
 ]
