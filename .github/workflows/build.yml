@@ -31,21 +31,9 @@ jobs:
                     --tag $IMG:${{ env.version_major }}.${{ env.version_minor }}.latest \
                     --tag $IMG:${{ env.version_major }}.latest \
                     --tag $IMG:latest \
+                    --build-arg TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }}
                     .
                   docker push --all-tags $IMG
-    build_lib:
-        name: Build and publish library
-        runs-on: ubuntu-22.04
-        needs: build_docker
-        steps:
-            - name: Pull image
-              run: |
-                IMG=ghcr.io/${{ github.repository }}
-                IMG=${IMG,,}
-                docker pull $IMG
-            - name: Run image as container
-              run: |
-                  docker run --name simple-lib -e TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} $IMG
                   
                   
             
