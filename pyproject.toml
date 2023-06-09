@@ -12,7 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent"
 ]
-packages = [{ include = "src/remlaverlib" }]
+packages = [{ include = "remlaverlib", from = "src" }]
 
 [tool.poetry-dynamic-versioning]
 enable = true
