@@ -20,11 +20,17 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN poetry config installer.max-workers 10
 RUN poetry update -vv --without dev
 
+
 # Build package
 RUN poetry build
 
+# Configure TestPyPi as a repo to publish to
+CMD ["poetry", "config", "repositories.test-pypi", "https://test.pypi.org/legacy"]
+CMD ["poetry", "config", "pypi-token.test-pypi", "$TWINE_PASSWORD"]
+
+
 # Publish package
-CMD ["poetry", "publish", "--repository", "testpypi", "--username", "__token__", "--password", "$TWINE_PASSWORD"]
+CMD ["poetry", "publish", "-r", "test-pypi"]
 
 
 
