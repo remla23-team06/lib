@@ -5,7 +5,7 @@ authors = [
      "Radek Kargul <r.kargul@student.tudelft.nl>",
     "Rohan Sobha <r.r.sobha@student.tudelft.nl>",
     "Konstantinos Andriopoulos <a.konstantinos@student.tudelft.nl>",
-    "Andrei Ionescu <a.c.ionescu-1@student.tudelft.nl>
+    "Andrei Ionescu <a.c.ionescu-1@student.tudelft.nl>"
 ]
 description = "A simple library that returns its own version."
 classifiers = [
