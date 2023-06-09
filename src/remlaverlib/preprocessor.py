@@ -1,10 +1,15 @@
+""" The preprocessor module contains the preprocessor class"""
 import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
 
-class Preprocessor:
+class Preprocessor:  # pylint: disable=too-few-public-methods
+    """
+    Processes the input to the model by applying a PorterStemmer
+    """
+
     def __init__(self):
         self.porter_stemmer = PorterStemmer()
         self.all_stopwords = self._init_stopwords()
