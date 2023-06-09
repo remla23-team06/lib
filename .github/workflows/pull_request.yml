@@ -1,0 +1,52 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install poetry
+        run: curl -sSL https://install.python-poetry.org | python3 - --version=1.4.2
+
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry -vv install --no-interaction --no-ansi
+
+      - name: Run Pylint
+        run: poetry run pylint src tests
+
+
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: curl -sSL https://install.python-poetry.org | python3 - --version=1.4.2
+
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry -vv install --no-interaction --no-ansi
+
+      - name: Run tests
+        run: poetry run pytest
+
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Docker build
+        run: docker build . -t lib-pr-ci
+
+
