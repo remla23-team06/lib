@@ -48,13 +48,10 @@ jobs:
         run: poetry update -vv --without dev --no-interaction --no-ansi
       - name: Configure TestPypi as repo
         run: poetry config repositories.test-pypi https://test.pypi.org/legacy
-      - name: Set TestPypi token
-        run: poetry config pypi-token.test-pypi ${{ secrets.TWINE_PASSWORD }}
       - name: Build TestPypi package
         run: poetry build
       - name: Upload package
-        run: poetry publish -r test-pypi
-                  
+        run: poetry publish -r test-pypi -u __token__ -p ${{ secrets.TWINE_PASSWORD }}
                   
             
             
