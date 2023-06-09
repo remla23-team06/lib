@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: poetry update -vv --without dev --no-interaction --no-ansi
       - name: Configure TestPypi as repo
-        run: poetry config repositories.test-pypi https://test.pypi.org/legacy
+        run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
       - name: Build TestPypi package
         run: poetry build
       - name: Upload package
