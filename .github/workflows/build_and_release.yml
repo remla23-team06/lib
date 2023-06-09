@@ -36,21 +36,22 @@ jobs:
     publish_package:
         name: Publish library to TestPypi
         runs-on: ubuntu-22.04
-        needs: build_docker
         steps:
             - uses: actions/checkout@v3
-            - name: Registry Login (ghcr.io)
-              run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-            - name: Pull published image
-              run: |
-                  IMG=ghcr.io/${{ github.repository }}
-                  IMG=${IMG,,}
-                  docker pull $IMG
-            - name: Publish package to TestPyPi
-              run: |
-                  IMG=ghcr.io/${{ github.repository }}
-                  IMG=${IMG,,}
-                  docker run -e TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} $IMG 
+            - name: Install poetry
+              run: curl -sSL https://install.python-poetry.org | python3 - --version=1.5.0
+            - uses: actions/setup-python@v3
+              with:
+                python-version: '3.10'
+                cache: 'poetry'
+            - name: Install dependencies
+              run: poetry update -vv --without dev --no-interaction --no-ansi
+            - name: Configure TestPypi as repo
+              run: poetry config repositories.test-pypi https://test.pypi.org/legacy
+            - name: Set TestPypi token
+              run: poetry config pypi-token.test-pypi ${{ secrets.TWINE_PASSWORD }}
+            - name: Upload package
+              run: poetry publish -r test-pypi
                   
                   
             
