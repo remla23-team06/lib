@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
 
-class Preprocessing:
+class Preprocessor:
     def __init__(self):
         self.porter_stemmer = PorterStemmer()
         self.all_stopwords = self._init_stopwords()
