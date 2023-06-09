@@ -1,5 +1,5 @@
 # Use the official Python 3.10 image from Docker Hub
-FROM python:3.10.7
+FROM python:3.10
 
 # Set the working directory to /app
 WORKDIR /app
