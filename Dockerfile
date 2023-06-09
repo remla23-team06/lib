@@ -1,26 +1,32 @@
-# Use the official Python 3.10 image from Docker Hub
 FROM python:3.10
 
-# Set the working directory to /app
+ENV POETRY_HOME="/opt/poetry" \
+    POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_NO_INTERACTION=1 \
+    POETRY_VERSION=1.5.0
+ENV PATH="$PATH:$POETRY_HOME/bin"
+
 WORKDIR /app
 
-# Copy the Pipfile and Pipfile.lock to the container
-COPY Pipfile Pipfile.lock /app/
+COPY /src /app/
+COPY /tests /app/
 
-# Install packages using pipenv
-RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
+# Copy the pyproject and lock file into app
+COPY pyproject.toml /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
 
-# Build the library
-RUN pipenv run python3 -m build
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
-# Upgrade Twine (if necessary)
-CMD ["pipenv","run","python3", "-m", "pip", "install", "--upgrade", "twine"]
+# Install dependencies
+RUN poetry config installer.max-workers 10
+RUN poetry update -vv --without dev
 
-# Upload package to Test Pypi
-CMD ["pipenv", "run", "python3", "-m", "twine", "upload", "--repository",  "testpypi", "--username", "__token__", "--password=$TWINE_PASSWORD", "dist/*"]
+# Build package
+RUN poetry build
+
+# Publish package
+CMD ["poetry", "publish", "--repository", "testpypi", "--username", "__token__", "--password", "$TWINE_PASSWORD"]
 
 
 
