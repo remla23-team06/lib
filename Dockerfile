@@ -8,11 +8,9 @@ ENV PATH="$PATH:$POETRY_HOME/bin"
 
 WORKDIR /app
 
-COPY /src /app/
-COPY /tests /app/
 
-# Copy the pyproject and lock file into app
-COPY pyproject.toml /app
+# Copy all the files
+COPY . /app
 
 
 # Install Poetry
