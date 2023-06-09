@@ -7,7 +7,7 @@ authors = [
     "Konstantinos Andriopoulos <a.konstantinos@student.tudelft.nl>",
     "Andrei Ionescu <a.c.ionescu-1@student.tudelft.nl>
 ]
-description = "A simple library that returns its own version"
+description = "A simple library that returns its own version."
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent"
@@ -18,7 +18,7 @@ enable = true
 vcs = "git"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.2.12"
