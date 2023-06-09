@@ -2,7 +2,7 @@
 name = "remlaverlib"
 version = "0.0.0"
 authors = [
-     "Radek Kargul <r.kargul@student.tudelft.nl>",
+    "Radek Kargul <r.kargul@student.tudelft.nl>",
     "Rohan Sobha <r.r.sobha@student.tudelft.nl>",
     "Konstantinos Andriopoulos <a.konstantinos@student.tudelft.nl>",
     "Andrei Ionescu <a.c.ionescu-1@student.tudelft.nl>"
@@ -12,7 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent"
 ]
-packages = [{include = "remlaverlib"}]
+packages = [{ include = "src/remlaverlib" }]
 
 [tool.poetry-dynamic-versioning]
 enable = true
