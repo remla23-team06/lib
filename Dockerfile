@@ -25,7 +25,7 @@ RUN poetry update -vv --without dev
 RUN poetry build
 
 # Configure TestPyPi as a repo to publish to
-CMD ["poetry", "config", "repositories.test-pypi", "https://test.pypi.org/legacy"]
+CMD ["poetry", "config", "repositories.test-pypi", "https://test.pypi.org/legacy/"]
 CMD ["poetry", "config", "pypi-token.test-pypi", "$TWINE_PASSWORD"]
 
 
