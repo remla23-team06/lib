@@ -46,6 +46,8 @@ jobs:
           cache: 'poetry'
       - name: Install dependencies
         run: poetry update -vv --without dev --no-interaction --no-ansi
+      - name: Add dynamic versioning
+        run: poetry self add "poetry-dynamic-versioning[plugin]"
       - name: Configure TestPypi as repo
         run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
       - name: Build TestPypi package
