@@ -8,6 +8,7 @@ class Preprocessing:
     def __init__(self):
         self.porter_stemmer = PorterStemmer()
         self.all_stopwords = self._init_stopwords()
+        nltk.download('stopwords')
 
     @staticmethod
     def _init_stopwords():
