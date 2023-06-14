@@ -53,7 +53,7 @@ jobs:
       - name: Build TestPypi package
         run: poetry build
       - name: Upload package
-        run: poetry publish -r test-pypi -u __token__ -p ${{ secrets.TWINE_PASSWORD }}
+        run: poetry publish -r test-pypi -u __token__ -p ${{ secrets.TWINE_PASSWORD }} ./dist
                   
             
             
