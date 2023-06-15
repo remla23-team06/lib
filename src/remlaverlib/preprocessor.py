@@ -30,4 +30,3 @@ class Preprocessor:
             [self.porter_stemmer.stem(word) for word in equalized_review if
              word not in set(self.all_stopwords)])
         return stemmed_review
-
