@@ -43,10 +43,13 @@ jobs:
         run: |
           echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
 
+      - name: Create nltk_data directory
+        run: mkdir ${{ github.workspace }}/nltk_data
+
       - name: Set NLTK_DATA to folder in repo
         run: |
           mkdir nltk_data
-          echo "NLTK_DATA=$PWD/nltk_data" >> "$GITHUB_ENV"
+          echo "NLTK_DATA=${{ github.workspace }}/nltk_data" >> "$GITHUB_ENV"
 
       - name: Run tests
         run: poetry run pytest
