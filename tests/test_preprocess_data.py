@@ -8,7 +8,8 @@ from src.remlaverlib.preprocessor import Preprocessor
 
 @pytest.fixture
 def preprocessor():
-    yield Preprocessor()
+    pre_proc = Preprocessor()
+    return pre_proc
 
 
 def test_stopwords(preprocessor):
