@@ -13,10 +13,11 @@ class Preprocessor:
     def __init__(self):
         self.porter_stemmer = PorterStemmer()
         self.all_stopwords = self._init_stopwords()
-        nltk.download("stopwords", download_dir="./data/nltk_data")
+
 
     @staticmethod
     def _init_stopwords():
+        nltk.download("stopwords")
         all_stopwords = stopwords.words("english")
         all_stopwords.remove("not")
         return all_stopwords
