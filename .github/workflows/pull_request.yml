@@ -43,17 +43,11 @@ jobs:
         run: |
           echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
 
-      - name: Create nltk_data directory
-        run: mkdir -p ${{ github.workspace }}/nltk_data
-
-      - name: Set NLTK_DATA to folder in repo
-        run: |
-          echo "NLTK_DATA=${{ github.workspace }}/nltk_data" >> "$GITHUB_ENV"
+      - name: Download stopwords from NLTK
+        run: poetry run python -c "import nltk; nltk.download('stopwords')
 
       - name: Run tests
-        run: |
-          echo $NLTK_DATA
-          poetry run pytest
+        run: poetry run pytest
 
   docker_build:
     runs-on: ubuntu-22.04
