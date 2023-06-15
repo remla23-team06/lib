@@ -44,7 +44,7 @@ jobs:
           echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
 
       - name: Create nltk_data directory
-        run: mkdir ${{ github.workspace }}/nltk_data
+        run: mkdir -p ${{ github.workspace }}/nltk_data
 
       - name: Set NLTK_DATA to folder in repo
         run: |
