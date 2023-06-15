@@ -14,7 +14,6 @@ class Preprocessor:
         self.porter_stemmer = PorterStemmer()
         self.all_stopwords = self._init_stopwords()
 
-
     @staticmethod
     def _init_stopwords():
         nltk.download("stopwords")
@@ -26,7 +25,7 @@ class Preprocessor:
         """
         Preprocess the review data
         """
-        equalized_review = re.sub('[^a-zA-Z]', ' ', review).lower().split()
+        equalized_review = re.sub("[^a-zA-Z]", " ", review).lower().split()
         stemmed_review = " ".join(
             [self.porter_stemmer.stem(word) for word in equalized_review if
              word not in set(self.all_stopwords)])
