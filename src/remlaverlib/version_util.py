@@ -12,6 +12,6 @@ class VersionUtil:
         :return: a string with the version number like MAJOR.MINOR.PATCH
         """
         try:
-            return metadata.version('remlaverlib')
+            return metadata.version("remlaverlib")
         except metadata.PackageNotFoundError:
-            return 'Package not found'
+            return "Package not found"
