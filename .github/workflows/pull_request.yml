@@ -44,7 +44,9 @@ jobs:
           echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
 
       - name: Run tests
-        run: poetry run pytest
+        run: poetry run pytest --junitxml=./pytest_report.xml
+
+
 
   docker_build:
     runs-on: ubuntu-22.04
