@@ -16,6 +16,10 @@ jobs:
         with:
           python-version: '3.10'
           cache: 'poetry'
+          
+      - name: Add current directory to PYTHONPATH
+        run: |
+          echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
 
       - name: Install dependencies
         run: poetry -vv install --no-interaction --no-ansi
